@@ -108,12 +108,11 @@ class PageHelper {
             try {
 
                 resp = await request({
-                    method: 'get', url: href,
+                    method: this.Operation.scraper.config.method, url: href,
                     timeout: this.Operation.scraper.config.timeout,
                     auth: this.Operation.scraper.config.auth,
                     headers: this.Operation.scraper.config.headers,
-                    proxy: this.Operation.scraper.config.proxy
-
+                    proxy: this.Operation.scraper.config.proxy,
                 })
                 if (this.Operation.scraper.config.removeStyleAndScriptTags) {
                     resp.data = stripTags(resp.data);
